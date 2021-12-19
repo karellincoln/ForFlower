@@ -1,23 +1,28 @@
 package main
 
 import (
+	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
-	"fyne.io/fyne/v2/canvas"
-	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
-	"github.com/karellincoln/ForFlower/apps"
-	"github.com/karellincoln/ForFlower/apps/info/resource"
 )
+
+var data = []string{"a", "string", "list"}
 
 func main() {
 	myApp := app.New()
-	myWindow := myApp.NewWindow("Entry Widget")
+	myWindow := myApp.NewWindow("List Widget")
 
+	list := widget.NewList(
+		func() int {
+			return len(data)
+		},
+		func() fyne.CanvasObject {
+			return widget.NewLabel("template")
+		},
+		func(i widget.ListItemID, o fyne.CanvasObject) {
+			o.(*widget.Label).SetText(data[i])
+		})
 
-	content.Add(widget.NewButton("Add more items", func() {
-		content.Add(widget.NewLabel("Added"))
-	}))
-
-	myWindow.SetContent(content)
+	myWindow.SetContent(list)
 	myWindow.ShowAndRun()
 }

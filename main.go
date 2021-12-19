@@ -4,10 +4,12 @@ import (
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
+	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
 	"github.com/karellincoln/ForFlower/apps/answer"
 	"github.com/karellincoln/ForFlower/apps/gallery"
 	"github.com/karellincoln/ForFlower/apps/info"
+	"github.com/karellincoln/ForFlower/apps/tictactoe"
 	"github.com/karellincoln/ForFlower/resource"
 )
 
@@ -27,6 +29,7 @@ func main() {
 		widget.NewToolbarSeparator(),
 		widget.NewToolbarAction(resource.Answer, func() {callbackFunc(answer.Show(w))}),
 		widget.NewToolbarSeparator(),
+		widget.NewToolbarAction(theme.RadioButtonIcon(), func() {callbackFunc(tictactoe.Show(w))}),
 		widget.NewToolbarSpacer(),
 		widget.NewToolbarAction(resource.Info, func() {callbackFunc(info.Show(w))}),
 		)
