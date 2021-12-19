@@ -7,7 +7,7 @@ import (
 	"fyne.io/fyne/v2/widget"
 )
 
-// Show loads a tic-tac-toe example window for the specified app context
+// Show loads a tic-tac-toe example window for the specified apps context
 func Show(win fyne.Window) fyne.CanvasObject {
 	board := &board{}
 

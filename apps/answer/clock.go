@@ -109,7 +109,7 @@ func (c *clockLayout) applyTheme(_ fyne.Settings) {
 	c.second.StrokeColor = theme.PrimaryColor()
 }
 
-// Show loads a clock example window for the specified app context
+// Show loads a clock example window for the specified apps context
 func Show(win fyne.Window) fyne.CanvasObject {
 	clock := &clockLayout{}
 	//clockWindow.SetOnClosed(func() {
