@@ -1,28 +1,24 @@
 package main
 
 import (
-	"fyne.io/fyne/v2"
+	"log"
+
 	"fyne.io/fyne/v2/app"
+	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
 )
 
-var data = []string{"a", "string", "list"}
-
 func main() {
 	myApp := app.New()
-	myWindow := myApp.NewWindow("List Widget")
+	myWindow := myApp.NewWindow("Entry Widget")
 
-	list := widget.NewList(
-		func() int {
-			return len(data)
-		},
-		func() fyne.CanvasObject {
-			return widget.NewLabel("template")
-		},
-		func(i widget.ListItemID, o fyne.CanvasObject) {
-			o.(*widget.Label).SetText(data[i])
-		})
+	input := widget.NewEntry()
+	input.SetPlaceHolder("Enter text...")
 
-	myWindow.SetContent(list)
+	content := container.NewVBox(input, widget.NewButton("Save", func() {
+		log.Println("Content was:", input.Text)
+	}))
+
+	myWindow.SetContent(content)
 	myWindow.ShowAndRun()
 }
